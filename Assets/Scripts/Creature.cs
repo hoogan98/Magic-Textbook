@@ -21,6 +21,7 @@ public abstract class Creature : Damageable
     private OnAttack selfAtkSide;
     private OnTurnEnd selfEnd;
     private OnDeath selfDie;
+    private HandleAddDamage takeDmg;
 
     public float Atk { get => atk; set => atk = value; }
     public Dictionary<string, float> SelfTags { get => selfTags; set => selfTags = value; }
@@ -33,8 +34,24 @@ public abstract class Creature : Damageable
     public HashSet<string> Aspects { get => aspects; set => aspects = value; }
     public bool IsRight { get => isRight; set => isRight = value; }
     public OnDeath SelfDie { get => selfDie; set => selfDie = value; }
+    public HandleAddDamage TakeDmg { get => takeDmg; set => takeDmg = value; }
 
-    override public void HandleAddDamage(float dmg, HashSet<string> tags, SideEffect s)
+    public void Attack()
+    {
+        //delegates run first, then attack. Creature could die during delegates.
+        if (this.selfAtkSide != null)
+        {
+            this.selfAtkSide();
+        }
+
+        this.target.Damage(this.atk, this.atkTags, this.atkSide);
+
+    }
+
+    public abstract void EndTurn();
+
+    //basic functions that act as default settings for the delegates
+    protected void BasicHit(float dmg, HashSet<string> tags, SideEffect s)
     {
         //save original damage value to pass to delegate
         float origDmg = dmg;
@@ -53,22 +70,20 @@ public abstract class Creature : Damageable
         s(this);
         if (this.dmgHandler != null)
         {
+            //uses the original damage value that came in
             dmgHandler(origDmg, tags, s);
-
         }
     }
 
-    public void Attack()
+    //works as handleAddDmg delegate, hence the weird args
+    protected void BasicCheckDeath(float dmg, HashSet<string> tags, SideEffect s)
     {
-        //delegates run first, then attack. Creature could die during delegates.
-        if (this.selfAtkSide != null)
+        if (this.Health <= 0 && this.Aspects.Contains("living"))
         {
-            this.selfAtkSide();
+            this.Aspects.Remove("living");
+            this.Aspects.Add("dead");
+            //rotate 90 degrees
+            this.transform.Rotate(new Vector3(1, 0, 0), 90f);
         }
-
-        this.target.HandleAddDamage(this.atk, this.atkTags, this.atkSide);
-
     }
-
-    public abstract void EndTurn();
 }

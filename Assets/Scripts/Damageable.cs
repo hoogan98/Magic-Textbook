@@ -16,5 +16,7 @@ public abstract class Damageable : MonoBehaviour
 
     public Damageable target;
 
-    public abstract void HandleAddDamage(float dmg, HashSet<string> tags, SideEffect s);
+    public delegate void HandleAddDamage(float dmg, HashSet<string> tags, SideEffect s);
+
+    public abstract void Damage(float dmg, HashSet<string> tags, SideEffect s);
 }

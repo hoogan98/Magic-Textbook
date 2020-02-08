@@ -76,4 +76,10 @@ public class RockRat : Creature
             this.Attack();
         }
     }
+
+    public override void Damage(float dmg, HashSet<string> tags, SideEffect s)
+    {
+        Debug.Log("add damage to dirt rat");
+        throw new System.NotImplementedException();
+    }
 }

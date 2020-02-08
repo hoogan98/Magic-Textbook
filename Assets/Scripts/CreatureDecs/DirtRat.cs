@@ -56,6 +56,8 @@ public class DirtRat : Creature
         this.SelfAtkSide = null;
         this.SelfEnd = null;
         this.SelfDie = null;
+        this.TakeDmg = new HandleAddDamage(this.BasicHit);
+        this.TakeDmg += new HandleAddDamage(this.BasicCheckDeath);
     }
 
 
@@ -98,6 +100,14 @@ public class DirtRat : Creature
         if (this.Aspects.Contains("living"))
         {
             this.Attack();
+        }
+    }
+
+    public override void Damage(float dmg, HashSet<string> tags, SideEffect s)
+    {
+        if (this.TakeDmg != null)
+        {
+            this.TakeDmg(dmg, tags, s);
         }
     }
 }
