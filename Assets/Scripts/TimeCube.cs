@@ -14,7 +14,7 @@ public class TimeCube : Damageable
         turn = false;
     }
 
-    public override void HandleAddDamage(float dmg, HashSet<string> tags, SideEffect s)
+    public override void Damage(float dmg, HashSet<string> tags, SideEffect s)
     {
         //so how do you kill time?
     }

@@ -51,13 +51,13 @@ public class DirtRat : Creature
         };
 
         //delegate declarations
-        this.DmgHandler = new OnDamage(OnDmgDel);
         this.AtkSide = new SideEffect(AttackSideEffect);
         this.SelfAtkSide = null;
         this.SelfEnd = null;
         this.SelfDie = null;
         this.TakeDmg = new HandleAddDamage(this.BasicHit);
         this.TakeDmg += new HandleAddDamage(this.BasicCheckDeath);
+        this.TakeDmg += new HandleAddDamage(OnDmgDel);
     }
 
 

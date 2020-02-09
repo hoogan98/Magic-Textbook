@@ -45,11 +45,12 @@ public class RockRat : Creature
         };
 
         //delegate declarations
-        this.DmgHandler = null;
         this.AtkSide = new SideEffect(giveConcussion);
         this.SelfAtkSide = null;
         this.SelfEnd = null;
         this.SelfDie = null;
+        this.TakeDmg = new HandleAddDamage(this.BasicHit);
+        this.TakeDmg += new HandleAddDamage(this.BasicCheckDeath);
     }
 
     void giveConcussion(Damageable d)
@@ -79,7 +80,9 @@ public class RockRat : Creature
 
     public override void Damage(float dmg, HashSet<string> tags, SideEffect s)
     {
-        Debug.Log("add damage to dirt rat");
-        throw new System.NotImplementedException();
+        if (this.TakeDmg != null)
+        {
+            this.TakeDmg(dmg, tags, s);
+        }
     }
 }

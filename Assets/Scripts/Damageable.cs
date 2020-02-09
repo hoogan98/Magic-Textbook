@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Damageable : MonoBehaviour
 {
-    public delegate void OnDamage(float dmg, HashSet<string> tags, SideEffect s);
+    //public delegate void OnDamage(float dmg, HashSet<string> tags, SideEffect s);
 
     public delegate void OnTurnEnd();
 

@@ -15,13 +15,13 @@ public class SlotHandler : Damageable
     }
     //end for testing
 
-    public override void HandleAddDamage(float dmg, HashSet<string> tags, SideEffect s)
-    {
-        //figure out how these things should be hurt
-    }
-
     public void ChangeTarget(SlotHandler slot)
     {
         myBoi.target = slot.myBoi;
+    }
+
+    public override void Damage(float dmg, HashSet<string> tags, SideEffect s)
+    {
+        //figure out how to damage these things
     }
 }
