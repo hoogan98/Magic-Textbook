@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class RockRat : Creature
 {
-    //A rat made out of rocks.
+    //An elemental rat made out of rocks.
     // => strong against blades and water
     // => weak against other rocks and lava
 
     void Start()
     {
+        //book text
+        this.description = "An elemental rat made out of rocks.";
+        this.facts = new List<string>
+        {
+            "strong against blades and water",
+            "weak against other rocks and lava",
+            "gives concussions to hit creatures, resulting in lower attack if they attack using telepathy or psychic magic"
+        };
+
         //basic vals
         this.Health = 45f;
         this.Atk = 9f;

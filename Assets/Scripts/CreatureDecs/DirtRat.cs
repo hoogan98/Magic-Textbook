@@ -14,6 +14,14 @@ public class DirtRat : Creature
 
     void Start()
     {
+        //book text
+        this.description = "the dirt rat, a psychic pile of sentient dirt shaped like a rat.Communicates telepathically, but can only say 'more dirt'";
+        this.facts = new List<string>() {
+            "gets a stats up and size up from getting hit with dirty attacks.",
+            "weak to clean attacks",
+            "has telepathic attacks"
+        };
+
         //basic vals
         this.Health = 30f;
         this.Atk = 7f;
@@ -51,22 +59,13 @@ public class DirtRat : Creature
         };
 
         //delegate declarations
-        this.AtkSide = new SideEffect(AttackSideEffect);
+        this.AtkSide = null;
         this.SelfAtkSide = null;
         this.SelfEnd = null;
         this.SelfDie = null;
         this.TakeDmg = new HandleAddDamage(this.BasicHit);
         this.TakeDmg += new HandleAddDamage(this.BasicCheckDeath);
         this.TakeDmg += new HandleAddDamage(OnDmgDel);
-    }
-
-
-    void AttackSideEffect(Damageable t)
-    {
-        if (t is Creature c)
-        {
-            c.Health -= 1f;
-        }
     }
 
     void OnDmgDel(float dmg, HashSet<string> tags, SideEffect s)

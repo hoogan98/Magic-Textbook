@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Damageable.cs" />
     <Compile Include="Assets\Scripts\SlotHandler.cs" />
     <Compile Include="Assets\Scripts\TimeCube.cs" />
+    <Compile Include="Assets\Scripts\Wizards\BasicWizard.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/mediu/Documents/UnityProjects/MagicTextbook/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

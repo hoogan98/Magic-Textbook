@@ -5,6 +5,10 @@ using static Damageable;
 
 public abstract class Creature : Damageable
 {
+    //book text
+    public string description;
+    public List<string> facts;
+
     private float health;
     private float atk;
     private HashSet<string> aspects;
