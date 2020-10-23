@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 4ae68b74d5c35de4081936ea6eba1609
+guid: cf061499ee60b9541a0bbdc1ec481aa5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9114002507419889208
-    second: RockRat_0
+      213: -1705262204276870575
+    second: idle1
   - first:
-      213: -1365924697706157507
-    second: RockRat_1
+      213: -6849577380084670683
+    second: idle2
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -29,6 +29,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -49,8 +50,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -63,13 +64,15 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -78,10 +81,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -90,10 +93,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -104,13 +107,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RockRat_0
+      name: idle1
       rect:
         serializedVersion: 2
-        x: 2
-        y: 43
-        width: 27
-        height: 10
+        x: 4
+        y: 65
+        width: 42
+        height: 15
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7438f8d3b5a3514c8c2986233e35f16
-      internalID: 9114002507419889208
+      spriteID: 363a3dfa79dc93b429c0ab051f5ebdf4
+      internalID: -1705262204276870575
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RockRat_1
+      name: idle2
       rect:
         serializedVersion: 2
-        x: 2
-        y: 11
-        width: 27
-        height: 9
+        x: 4
+        y: 17
+        width: 42
+        height: 14
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,8 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d97483e7cf3d1c46b7caee17d1b44b7
-      internalID: -1365924697706157507
+      spriteID: b25d902e619d9ee40bd45995b4dcc185
+      internalID: -6849577380084670683
       vertices: []
       indices: 
       edges: []

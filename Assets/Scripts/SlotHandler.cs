@@ -5,7 +5,6 @@ using UnityEngine;
 public class SlotHandler : Damageable
 {
     public Damageable myBoi;
-    public bool isRight = false;
 
     //for testing
     //public GameObject otherSlot;
@@ -16,25 +15,26 @@ public class SlotHandler : Damageable
     //}
     //end for testing
 
-    public void AddBoi(GameObject g)
-    {
-        g.transform.parent = this.transform;
-        g.transform.localPosition = Vector3.zero;
+    // public void AddBoi(GameObject g)
+    // {
+    //     g.transform.parent = this.transform;
+    //     g.transform.localPosition = Vector3.zero;
+    // }
 
-        myBoi = g.GetComponent<Damageable>();
-        if (myBoi is Creature c)
-        {
-            c.isFacingLeft = this.isRight;
-        }
-    }
-
-    public void ChangeTarget(SlotHandler slot)
-    {
-        myBoi.target = slot.myBoi;
-    }
+    // public void ChangeTarget(GameObject other)
+    // {
+    //     myBoi.SetTarget(other);
+    // }
 
     public override void Damage(float dmg, HashSet<string> tags, SideEffect s)
     {
-        //figure out how to damage these things
+        //myBoi.Damage(dmg, tags, s);
+        
+        //add a way to give these side effects
+    }
+
+    public override void Initialize()
+    {
+        //not sure what to do here
     }
 }

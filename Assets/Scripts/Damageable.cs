@@ -5,6 +5,10 @@ using UnityEngine;
 public abstract class Damageable : MonoBehaviour
 {
     //public delegate void OnDamage(float dmg, HashSet<string> tags, SideEffect s);
+    //public string Name;
+    public GameObject TargetingMarker;
+
+    protected GameObject TM;
 
     public delegate void OnTurnEnd();
 
@@ -14,9 +18,21 @@ public abstract class Damageable : MonoBehaviour
 
     public delegate void OnDeath();
 
-    public Damageable target;
+    protected Damageable target;
 
     public delegate void HandleAddDamage(float dmg, HashSet<string> tags, SideEffect s);
 
     public abstract void Damage(float dmg, HashSet<string> tags, SideEffect s);
+
+    public abstract void Initialize();
+
+    public void SetTarget(GameObject targ)
+    {
+        this.target = targ.GetComponent<Damageable>();
+        
+        // GameObject newTarget = Instantiate(this.TargetingMarker, targ.transform);
+        // newTarget.SetActive(false);
+        //
+        // this.TM = newTarget;
+    }
 }

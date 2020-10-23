@@ -8,17 +8,13 @@ public abstract class Creature : Damageable
     //book text
     public string description;
     public List<string> facts;
+    //public TimeCube tCube;
 
     private float health;
     private float atk;
     private HashSet<string> aspects;
     private Dictionary<string, float> selfTags;
     private HashSet<string> atkTags;
-    private bool isRight;
-    public bool isFacingLeft;
-
-    //private bool hasInfiniteTurn;
-    //private float turnTime;           //for wizards
 
     private SideEffect atkSide;
     private OnAttack selfAtkSide;
@@ -34,7 +30,6 @@ public abstract class Creature : Damageable
     public OnTurnEnd SelfEnd { get => selfEnd; set => selfEnd = value; }
     public float Health { get => health; set => health = value; }
     public HashSet<string> Aspects { get => aspects; set => aspects = value; }
-    public bool IsRight { get => isRight; set => isRight = value; }
     public OnDeath SelfDie { get => selfDie; set => selfDie = value; }
     public HandleAddDamage TakeDmg { get => takeDmg; set => takeDmg = value; }
 
@@ -46,11 +41,11 @@ public abstract class Creature : Damageable
             this.selfAtkSide();
         }
 
-        this.target.Damage(this.atk, this.atkTags, this.atkSide);
-
+        if (target != null)
+        {
+            this.target.Damage(this.atk, this.atkTags, this.atkSide);
+        }
     }
-
-    public abstract void EndTurn();
 
     //basic functions that act as default settings for the delegates
     protected void BasicHit(float dmg, HashSet<string> tags, SideEffect s)
@@ -68,8 +63,14 @@ public abstract class Creature : Damageable
         }
         //dmg is taken first, then delegates
         this.Health -= dmg;
-
-        s(this);
+        
+        //probably make it so that the creature dies if its health gets to zero here
+        
+        if (s != null)
+        {
+            s(this);
+        }
+        
         //if (this.dmgHandler != null)
         //{
         //    //uses the original damage value that came in
@@ -82,12 +83,33 @@ public abstract class Creature : Damageable
     {
         if (this.Health <= 0 && this.Aspects.Contains("living"))
         {
-            this.Aspects.Remove("living");
-            this.Aspects.Add("dead");
-            //rotate 90 degrees
-            this.transform.Translate(new Vector3(0, this.GetComponent<Renderer>().bounds.size.y, 0));
-            this.transform.Rotate(new Vector3(0, 0, 1), 180f);
-            
+            this.BasicDie();
         }
+    }
+
+    protected void BasicDie()
+    {
+        this.Aspects.Remove("living");
+        this.Aspects.Add("dead");
+        //rotate 90 degrees
+        this.transform.Translate(new Vector3(0, this.GetComponent<Renderer>().bounds.size.y, 0));
+        this.transform.Rotate(new Vector3(0, 0, 1), 180f);
+        //stop animation
+        this.GetComponent<SpriteAnim>().StopAnimation();
+    }
+
+    protected void BasicEndTurn()
+    {
+        //make sure to add a soul inhabited check later on to make sure players can't attack twice
+        if (this.Aspects.Contains("living"))
+        {
+            this.Attack();
+        }
+    }
+
+    protected void BasicTakeDmg(float dmg, HashSet<string> tags, SideEffect s)
+    {
+        this.BasicHit(dmg, tags, s);
+        this.BasicCheckDeath(dmg, tags, s);
     }
 }

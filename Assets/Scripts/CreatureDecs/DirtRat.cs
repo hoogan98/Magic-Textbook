@@ -12,7 +12,7 @@ public class DirtRat : Creature
 
     private float origXScale;
 
-    void Start()
+    public override void Initialize()
     {
         //book text
         this.description = "the dirt rat, a psychic pile of sentient dirt shaped like a rat.Communicates telepathically, but can only say 'more dirt'";
@@ -28,10 +28,6 @@ public class DirtRat : Creature
 
         this.origXScale = this.transform.localScale.x;
 
-        if (isFacingLeft)
-        {
-            this.GetComponent<SpriteRenderer>().flipX = true;
-        }
 
         //tag declarations
         this.SelfTags = new Dictionary<string, float>
@@ -61,11 +57,10 @@ public class DirtRat : Creature
         //delegate declarations
         this.AtkSide = null;
         this.SelfAtkSide = null;
-        this.SelfEnd = null;
+        this.SelfEnd = this.BasicEndTurn;
         this.SelfDie = null;
-        this.TakeDmg = new HandleAddDamage(this.BasicHit);
-        this.TakeDmg += new HandleAddDamage(this.BasicCheckDeath);
-        this.TakeDmg += new HandleAddDamage(OnDmgDel);
+        this.TakeDmg = this.BasicTakeDmg;
+        this.TakeDmg += OnDmgDel;
     }
 
     void OnDmgDel(float dmg, HashSet<string> tags, SideEffect s)
@@ -85,20 +80,6 @@ public class DirtRat : Creature
                 this.Aspects.Add("large");
                 this.Aspects.Add("heavy");
             }
-        }
-    }
-
-    public override void EndTurn()
-    {
-        Debug.Log("dirt rat: " + this.Health);
-        if (this.SelfEnd != null)
-        {
-            this.SelfEnd();
-        }
-
-        if (this.Aspects.Contains("living"))
-        {
-            this.Attack();
         }
     }
 

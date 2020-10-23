@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\mediu\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\mediu\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_MagicTextbook.-2137409386.00" t="ExcludeRecursive" />
+    <e p="C:\Users\mediu\Documents\UnityProjects\MagicTextbook" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Book.cs" t="Include" />
+          <e p="Creature.cs" t="Include" />
+          <e p="CreatureDB.cs" t="Include" />
+          <e p="CreatureDecs" t="Include">
+            <e p="DirtRat.cs" t="Include" />
+            <e p="Glonk.cs" t="Include" />
+            <e p="RockRat.cs" t="Include" />
+          </e>
+          <e p="Damageable.cs" t="Include" />
+          <e p="SlotHandler.cs" t="Include" />
+          <e p="Soul.cs" t="Include" />
+          <e p="SpriteAnim.cs" t="Include" />
+          <e p="TimeCube.cs" t="Include" />
+          <e p="UIstuff" t="Include">
+            <e p="PState.cs" t="Include" />
+            <e p="UIMGR.cs" t="Include" />
+          </e>
+          <e p="Wizards" t="Include">
+            <e p="BasicWizard.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="MagicTextbook.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

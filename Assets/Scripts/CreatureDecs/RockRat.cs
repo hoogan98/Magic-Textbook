@@ -8,7 +8,7 @@ public class RockRat : Creature
     // => strong against blades and water
     // => weak against other rocks and lava
 
-    void Start()
+    public override void Initialize()
     {
         //book text
         this.description = "An elemental rat made out of rocks.";
@@ -22,11 +22,6 @@ public class RockRat : Creature
         //basic vals
         this.Health = 45f;
         this.Atk = 9f;
-
-        if (isFacingLeft)
-        {
-            this.GetComponent<SpriteRenderer>().flipX = true;
-        }
 
         //tag declarations
         this.SelfTags = new Dictionary<string, float>
@@ -56,10 +51,9 @@ public class RockRat : Creature
         //delegate declarations
         this.AtkSide = new SideEffect(giveConcussion);
         this.SelfAtkSide = null;
-        this.SelfEnd = null;
+        this.SelfEnd = this.BasicEndTurn;
         this.SelfDie = null;
-        this.TakeDmg = new HandleAddDamage(this.BasicHit);
-        this.TakeDmg += new HandleAddDamage(this.BasicCheckDeath);
+        this.TakeDmg = new HandleAddDamage(this.BasicTakeDmg);
     }
 
     void giveConcussion(Damageable d)
@@ -70,20 +64,6 @@ public class RockRat : Creature
             {
                 c.Atk /= 2;
             }
-        }
-    }
-
-    public override void EndTurn()
-    {
-        Debug.Log("rock rat: " + this.Health);
-        if (this.SelfEnd != null)
-        {
-            this.SelfEnd();
-        }
-
-        if (this.Aspects.Contains("living"))
-        {
-            this.Attack();
         }
     }
 
