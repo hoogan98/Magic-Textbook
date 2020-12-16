@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Creature;
 
 public class DirtRat : Creature
 {
@@ -11,17 +11,31 @@ public class DirtRat : Creature
     // => has telepathic attacks
 
     private float origXScale;
+    private List<string> facs = new List<string> {
+        "gets a stats up and size up from getting hit with dirty attacks.",
+        "weak to clean attacks",
+        "has telepathic attacks"
+    };
+
+    public override string description
+    {
+        get
+        {
+            return "the dirt rat, a psychic pile of sentient dirt shaped like a rat.Communicates telepathically, but can only say 'more dirt'";
+        }
+        set { }
+    }
+
+    public override List<string> facts
+    {
+        get { return this.facs; }
+        set { }
+    }
+
+
 
     public override void Initialize()
     {
-        //book text
-        this.description = "the dirt rat, a psychic pile of sentient dirt shaped like a rat.Communicates telepathically, but can only say 'more dirt'";
-        this.facts = new List<string>() {
-            "gets a stats up and size up from getting hit with dirty attacks.",
-            "weak to clean attacks",
-            "has telepathic attacks"
-        };
-
         //basic vals
         this.Health = 30f;
         this.Atk = 7f;
@@ -65,6 +79,7 @@ public class DirtRat : Creature
 
     void OnDmgDel(float dmg, HashSet<string> tags, SideEffect s)
     {
+        Debug.Log("delegate called on dirt rat");
         if (tags.Contains("dirty"))
         {
             this.Health += dmg / 2;
@@ -87,6 +102,7 @@ public class DirtRat : Creature
     {
         if (this.TakeDmg != null)
         {
+            Debug.Log("damage taken on dirt rat");
             this.TakeDmg(dmg, tags, s);
         }
     }

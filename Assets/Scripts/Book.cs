@@ -8,6 +8,7 @@ public class Book : MonoBehaviour
 {
     private CreatureDB db;
     private Dictionary<string, Tuple<string, bool>> nameTranslations;
+    private List<string> spellIndexes;
     
     private List<char> consonants= new List<char>()
     {
@@ -46,9 +47,25 @@ public class Book : MonoBehaviour
         return this.db.nullCreature;
     }
 
+    public Page PrintPage(int pg)
+    {
+        string spellName = this.spellIndexes[pg];
+        string realName = this.nameTranslations[spellName].Item1;
+        Damageable currentSpell = this.db.GetSpell(realName).GetComponent<Damageable>();
+        
+        return new Page
+        {
+            realName = realName,
+            spellName = spellName,
+            description = currentSpell.description,
+            facts = currentSpell.facts
+        };
+    }
+
     public void GenerateBook()
     {
         this.nameTranslations = new Dictionary<string, Tuple<string, bool>>();
+        this.spellIndexes = new List<string>();
         List<string> names = this.db.names;
         
         for (int i = 0; i < db.dbSize; i++)
@@ -82,6 +99,7 @@ public class Book : MonoBehaviour
             
             Debug.Log(newName + " = " + names[i]);
             this.nameTranslations.Add(newName, new Tuple<string, bool>(names[i], false));
+            this.spellIndexes.Add(newName);
         }
     }
 

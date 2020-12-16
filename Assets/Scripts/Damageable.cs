@@ -7,6 +7,10 @@ public abstract class Damageable : MonoBehaviour
     //public delegate void OnDamage(float dmg, HashSet<string> tags, SideEffect s);
     //public string Name;
     public GameObject TargetingMarker;
+    
+    //book text
+    public abstract string description { get; set; }
+    public abstract List<string> facts { get; set; }
 
     protected GameObject TM;
 

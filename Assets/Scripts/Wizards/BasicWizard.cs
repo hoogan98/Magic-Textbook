@@ -61,6 +61,9 @@ public class BasicWizard : Creature
 
     }
 
+    public override string description { get; set; }
+    public override List<string> facts { get; set; }
+
     public override void Damage(float dmg, HashSet<string> tags, SideEffect s)
     {
         if (this.TakeDmg != null)

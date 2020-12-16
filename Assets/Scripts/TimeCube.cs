@@ -94,10 +94,13 @@ public class TimeCube : Damageable
         this.p1Soul.GiveBook(p1Book);
         this.p2Soul.GiveBook(p2Book);
 
-        this.uimgr.Setup(this.p1Soul, this.p2Soul);
+        this.uimgr.Setup();
 
         //this.PassTurn();
     }
+
+    public override string description { get; set; }
+    public override List<string> facts { get; set; }
 
     public override void Damage(float dmg, HashSet<string> tags, SideEffect s)
     {
@@ -110,6 +113,29 @@ public class TimeCube : Damageable
         //{
         //    this.PassTurn();
         //}
+    }
+
+    public void UpdateTurnUI(Soul.TurnState state)
+    {
+        if (this.p1Soul.hasTurn)
+        {
+            uimgr.UpdateTurnState('l', state);
+        }
+        else
+        {
+            uimgr.UpdateTurnState('r', state);
+        }
+    }
+
+    public void ShowBook(Book b)
+    {
+        //display the first page for now
+        this.uimgr.DisplayBook(b, 0);
+    }
+
+    public void HideBook()
+    {
+        this.uimgr.CloseCurrentBook();
     }
 
     public void PassTurn()

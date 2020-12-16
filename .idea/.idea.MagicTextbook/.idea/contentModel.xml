@@ -21,7 +21,7 @@
           <e p="SpriteAnim.cs" t="Include" />
           <e p="TimeCube.cs" t="Include" />
           <e p="UIstuff" t="Include">
-            <e p="PState.cs" t="Include" />
+            <e p="Data.cs" t="Include" />
             <e p="UIMGR.cs" t="Include" />
           </e>
           <e p="Wizards" t="Include">

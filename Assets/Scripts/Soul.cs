@@ -27,7 +27,7 @@ public class Soul : MonoBehaviour
     private void Start()
     {
         this.slots = this.transform.parent.parent.parent.gameObject;
-        this.state = TurnState.Waiting;
+        SetState(TurnState.Waiting);
         this.end = false;
     }
 
@@ -103,23 +103,25 @@ public class Soul : MonoBehaviour
                     {
                         case KeyCode.W:
                             Debug.Log(this.testName + " attacks");
-                            this.state = TurnState.Attacking;
+                            SetState(TurnState.Attacking);
                             break;
                 
                         case KeyCode.S:
                             Debug.Log(this.testName + " reads");
-                            this.state = TurnState.Reading;
+                            SetState(TurnState.Reading);
+                            //open the book
+                            this.tCube.ShowBook(this.boundBook);
                             break;
                 
                         case KeyCode.A:
                             Debug.Log(this.testName + " summons");
-                            this.state = TurnState.Summoning;
+                            SetState(TurnState.Summoning);
                             this.summonText = "";
                             break;
                 
                         case KeyCode.D:
                             Debug.Log(this.testName + " changes targets");
-                            this.state = TurnState.Targeting;
+                            SetState(TurnState.Targeting);
                             this.targeter = null;
                             break;
                 
@@ -135,7 +137,12 @@ public class Soul : MonoBehaviour
 
     private void ReadBook()
     {
-        //open the book
+        //finish reading
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            this.tCube.HideBook();
+            SetState(TurnState.Waiting);
+        }
     }
 
     private void Summon()
@@ -145,11 +152,11 @@ public class Soul : MonoBehaviour
             Debug.Log(this.testName + " attempting to summon: " + this.summonText);
             this.currentSpell = this.boundBook.AttemptSummon(this.summonText);
             this.summonText = "";
-            this.state = TurnState.Placing;
+            SetState(TurnState.Placing);
             return;
         } else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            this.state = TurnState.Waiting;
+            SetState(TurnState.Waiting);
             return;
         }
         
@@ -197,7 +204,7 @@ public class Soul : MonoBehaviour
         // {
         //     this.endingAction();
         // }
-        this.state = TurnState.Waiting; 
+        SetState(TurnState.Waiting);
         this.tCube.PassTurn();
         // Debug.Log("got through the passturn");
     }
@@ -231,9 +238,10 @@ public class Soul : MonoBehaviour
         }
     }
 
-    public TurnState GetState()
+    private void SetState(TurnState state)
     {
-        return this.state;
+        this.state = state;
+        this.tCube.UpdateTurnUI(this.state);
     }
 
     //to check for destruction, check the creature for the dead tag or the absence of "alive" or "undead" tags

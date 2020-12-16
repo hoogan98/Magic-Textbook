@@ -26,6 +26,9 @@ public class SlotHandler : Damageable
     //     myBoi.SetTarget(other);
     // }
 
+    public override string description { get; set; }
+    public override List<string> facts { get; set; }
+
     public override void Damage(float dmg, HashSet<string> tags, SideEffect s)
     {
         //myBoi.Damage(dmg, tags, s);

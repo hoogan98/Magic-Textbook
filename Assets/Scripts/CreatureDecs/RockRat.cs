@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,17 +9,31 @@ public class RockRat : Creature
     // => strong against blades and water
     // => weak against other rocks and lava
 
+    
+    private List<string> facs = new List<string>
+    {
+        "strong against blades and water",
+        "weak against other rocks and lava",
+        "gives concussions to hit creatures, resulting in lower attack if they attack using telepathy or psychic magic"
+    };
+
+    public override string description
+    {
+        get
+        {
+            return "An elemental rat made out of rocks.";
+        }
+        set { }
+    }
+
+    public override List<string> facts
+    {
+        get { return this.facs; }
+        set { }
+    }
+
     public override void Initialize()
     {
-        //book text
-        this.description = "An elemental rat made out of rocks.";
-        this.facts = new List<string>
-        {
-            "strong against blades and water",
-            "weak against other rocks and lava",
-            "gives concussions to hit creatures, resulting in lower attack if they attack using telepathy or psychic magic"
-        };
-
         //basic vals
         this.Health = 45f;
         this.Atk = 9f;

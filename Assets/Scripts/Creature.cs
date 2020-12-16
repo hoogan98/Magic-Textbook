@@ -5,12 +5,9 @@ using static Damageable;
 
 public abstract class Creature : Damageable
 {
-    //book text
-    public string description;
-    public List<string> facts;
     //public TimeCube tCube;
 
-    private float health;
+    public float health;
     private float atk;
     private HashSet<string> aspects;
     private Dictionary<string, float> selfTags;
@@ -95,7 +92,10 @@ public abstract class Creature : Damageable
         this.transform.Translate(new Vector3(0, this.GetComponent<Renderer>().bounds.size.y, 0));
         this.transform.Rotate(new Vector3(0, 0, 1), 180f);
         //stop animation
-        this.GetComponent<SpriteAnim>().StopAnimation();
+        if (this.GetComponent<SpriteAnim>() != null)
+        {
+            this.GetComponent<SpriteAnim>().StopAnimation();
+        }
     }
 
     protected void BasicEndTurn()

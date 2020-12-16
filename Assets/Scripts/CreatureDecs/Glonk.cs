@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class Glonk : Creature
 {
+    private List<string> facs = new List<string>() {
+        "does absolutely nothing",
+        "cannot be intentionally summoned",
+        "dies instantly when hit with anything, regardless of damage"
+    };
+
+    public override string description
+    {
+        get
+        {
+            return "The Glonk is the physical form of the abstract concept of a mistake.";
+        }
+        set { }
+    }
+
+    public override List<string> facts
+    {
+        get { return this.facs; }
+        set { }
+    }
+
     public override void Initialize()
     {
-        //book text
-        this.description = "The Glonk is the physical form of the abstract concept of a mistake.";
-        this.facts = new List<string>() {
-            "does absolutely nothing",
-            "cannot be intentionally summoned",
-            "dies instantly when hit with anything, regardless of damage"
-        };
+        
         
         //basic vals
         this.Health = 1f;
