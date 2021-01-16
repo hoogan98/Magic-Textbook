@@ -638,6 +638,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftPlayerState: {fileID: 1305538028}
   rightPlayerState: {fileID: 1434930677}
+  UICanvas: {fileID: 123879839}
+  bookPageUI: {fileID: 5954459889964192498, guid: 3f3847aed6974c54895f0365f7e82310,
+    type: 3}
 --- !u!4 &1367281768
 Transform:
   m_ObjectHideFlags: 0
@@ -684,7 +687,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a848d6571021845a4fd49cbf9a649e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetingMarker: {fileID: 0}
+  targetingMarker: {fileID: 0}
+  targeterMarker: {fileID: 0}
+  TM: {fileID: 0}
   soul: {fileID: 7874428265037622377, guid: 99e5ebb4a4458524383fe46c5b765275, type: 3}
   p1B: {fileID: 1412469318}
   p2B: {fileID: 2034926800}

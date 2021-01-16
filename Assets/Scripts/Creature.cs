@@ -8,10 +8,10 @@ public abstract class Creature : Damageable
     //public TimeCube tCube;
 
     public float health;
-    private float atk;
-    private HashSet<string> aspects;
-    private Dictionary<string, float> selfTags;
-    private HashSet<string> atkTags;
+    public float atk;
+    public HashSet<string> aspects;
+    public Dictionary<string, float> selfTags;
+    public HashSet<string> atkTags;
 
     private SideEffect atkSide;
     private OnAttack selfAtkSide;

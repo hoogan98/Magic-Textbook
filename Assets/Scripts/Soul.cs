@@ -23,12 +23,16 @@ public class Soul : MonoBehaviour
     private GameObject currentSpell;
     private GameObject targeter;
     private bool end;
+    private SlotHandler[] controlledSlots;
+    private int currentPage;
 
     private void Start()
     {
         this.slots = this.transform.parent.parent.parent.gameObject;
+        this.controlledSlots = this.slots.GetComponentsInChildren<SlotHandler>();
         SetState(TurnState.Waiting);
         this.end = false;
+        this.currentPage = 0;
     }
 
     public void GiveBook(GameObject book)
@@ -110,7 +114,7 @@ public class Soul : MonoBehaviour
                             Debug.Log(this.testName + " reads");
                             SetState(TurnState.Reading);
                             //open the book
-                            this.tCube.ShowBook(this.boundBook);
+                            this.tCube.ShowBook(this.boundBook, this.currentPage);
                             break;
                 
                         case KeyCode.A:
@@ -137,8 +141,17 @@ public class Soul : MonoBehaviour
 
     private void ReadBook()
     {
+        if (Input.GetKeyDown(KeyCode.RightArrow) && this.currentPage < this.boundBook.size)
+        {
+            this.currentPage++;
+            this.tCube.ShowBook(this.boundBook, this.currentPage);
+        } else if (Input.GetKeyDown(KeyCode.LeftArrow) && this.currentPage > 0)
+        {
+            this.currentPage--;
+            this.tCube.ShowBook(this.boundBook, this.currentPage);
+        }
         //finish reading
-        if (Input.GetKeyDown(KeyCode.Return))
+        else if (Input.GetKeyDown(KeyCode.Return))
         {
             this.tCube.HideBook();
             SetState(TurnState.Waiting);
@@ -170,6 +183,15 @@ public class Soul : MonoBehaviour
 
     private void SelectTargets()
     {
+        
+        foreach (SlotHandler sh in this.controlledSlots)
+        {
+            if (sh.myBoi != null)
+            {
+                sh.myBoi.ShowTargets(true);
+            }
+        }
+        
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -193,6 +215,13 @@ public class Soul : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log(this.testName + "is finished targeting");
+            foreach (SlotHandler sh in this.controlledSlots)
+            {
+                if (sh.myBoi != null)
+                {
+                    sh.myBoi.ShowTargets(false);
+                }
+            }
             this.end = true;
         }
     }
@@ -228,7 +257,7 @@ public class Soul : MonoBehaviour
                 {
                     GameObject newBoi = Instantiate(this.currentSpell, hit.transform);
                     Damageable newD = newBoi.GetComponent<Damageable>();
-                    hit.collider.gameObject.GetComponent<SlotHandler>().myBoi = newD;
+                    hit.collider.gameObject.GetComponent<SlotHandler>().AddBoi(newD);
                     Debug.Log(hit.collider.gameObject.GetComponent<SlotHandler>().myBoi.name);
                     newD.Initialize();
                     //this.state = TurnState.Waiting;

@@ -6,13 +6,15 @@ public abstract class Damageable : MonoBehaviour
 {
     //public delegate void OnDamage(float dmg, HashSet<string> tags, SideEffect s);
     //public string Name;
-    public GameObject TargetingMarker;
+    public GameObject targetingMarker;
+    public GameObject targeterMarker;
+    public GameObject TM;
     
     //book text
     public abstract string description { get; set; }
     public abstract List<string> facts { get; set; }
-
-    protected GameObject TM;
+    
+    protected GameObject T;
 
     public delegate void OnTurnEnd();
 
@@ -34,9 +36,22 @@ public abstract class Damageable : MonoBehaviour
     {
         this.target = targ.GetComponent<Damageable>();
         
-        // GameObject newTarget = Instantiate(this.TargetingMarker, targ.transform);
-        // newTarget.SetActive(false);
-        //
-        // this.TM = newTarget;
+        GameObject newTarget = Instantiate(this.targetingMarker, targ.transform);
+        GameObject tMarker = Instantiate(this.targeterMarker, this.transform);
+        newTarget.SetActive(false);
+        tMarker.SetActive(false);
+        
+        this.T = newTarget;
+        this.target.TM = tMarker;
+    }
+
+    public void ShowTargets(bool showval)
+    {
+        if (this.T == null)
+        {
+            return;
+        }
+        this.T.SetActive(showval);
+        this.target.TM.SetActive(showval);
     }
 }

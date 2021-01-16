@@ -40,4 +40,11 @@ public class SlotHandler : Damageable
     {
         //not sure what to do here
     }
+
+    public void AddBoi(Damageable boi)
+    {
+        this.myBoi = boi;
+        boi.targeterMarker = targeterMarker;
+        boi.targetingMarker = targetingMarker;
+    }
 }

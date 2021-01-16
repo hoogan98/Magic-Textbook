@@ -7,6 +7,6 @@ public struct Page
     public string spellName;
     public string description;
     public List<string> facts;
-    
+    public Damageable subject;
 }
 

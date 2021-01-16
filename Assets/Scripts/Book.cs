@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class Book : MonoBehaviour
 {
+    public int size;
+    
     private CreatureDB db;
     private Dictionary<string, Tuple<string, bool>> nameTranslations;
     private List<string> spellIndexes;
@@ -58,7 +60,8 @@ public class Book : MonoBehaviour
             realName = realName,
             spellName = spellName,
             description = currentSpell.description,
-            facts = currentSpell.facts
+            facts = currentSpell.facts,
+            subject = currentSpell
         };
     }
 
@@ -101,6 +104,8 @@ public class Book : MonoBehaviour
             this.nameTranslations.Add(newName, new Tuple<string, bool>(names[i], false));
             this.spellIndexes.Add(newName);
         }
+
+        this.size = this.spellIndexes.Count - 1;
     }
 
     private char GetRandomConsonant()

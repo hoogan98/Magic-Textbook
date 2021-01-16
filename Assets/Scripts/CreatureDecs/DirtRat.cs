@@ -79,7 +79,6 @@ public class DirtRat : Creature
 
     void OnDmgDel(float dmg, HashSet<string> tags, SideEffect s)
     {
-        Debug.Log("delegate called on dirt rat");
         if (tags.Contains("dirty"))
         {
             this.Health += dmg / 2;
@@ -102,7 +101,6 @@ public class DirtRat : Creature
     {
         if (this.TakeDmg != null)
         {
-            Debug.Log("damage taken on dirt rat");
             this.TakeDmg(dmg, tags, s);
         }
     }

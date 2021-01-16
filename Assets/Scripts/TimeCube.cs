@@ -127,10 +127,10 @@ public class TimeCube : Damageable
         }
     }
 
-    public void ShowBook(Book b)
+    public void ShowBook(Book b, int pageIndex)
     {
         //display the first page for now
-        this.uimgr.DisplayBook(b, 0);
+        this.uimgr.DisplayBook(b, pageIndex);
     }
 
     public void HideBook()
@@ -180,12 +180,12 @@ public class TimeCube : Damageable
         {
             if (s.myBoi != null)
             {
-                Creature c = s.myBoi.GetComponent<Creature>();
-                //Debug.Log(c.name + " ends turn");
-                if (c.SelfEnd != null)
+                if (s.myBoi is Creature c)
                 {
-                    c.SelfEnd();
+                    c.SelfEnd?.Invoke();
                 }
+                //Debug.Log(c.name + " ends turn");
+                
             }
         }
     }
