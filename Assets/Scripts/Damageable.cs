@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,5 +54,10 @@ public abstract class Damageable : MonoBehaviour
         }
         this.T.SetActive(showval);
         this.target.TM.SetActive(showval);
+    }
+
+    protected void Detarget()
+    {
+        this.ShowTargets(false);
     }
 }

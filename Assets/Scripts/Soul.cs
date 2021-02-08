@@ -171,6 +171,11 @@ public class Soul : MonoBehaviour
         {
             SetState(TurnState.Waiting);
             return;
+        } else if (Input.GetKeyDown(KeyCode.Backspace) && this.summonText.Length > 0)
+        {
+            this.summonText = this.summonText.Substring(0, this.summonText.Length - 1);
+            Debug.Log(this.testName + " summoning: " + this.summonText);
+            return;
         }
         
         string inp = Input.inputString;

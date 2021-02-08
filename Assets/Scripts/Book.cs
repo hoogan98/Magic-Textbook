@@ -68,18 +68,6 @@ public class Book : MonoBehaviour
 
     public Page PrintPage(int pg)
     {
-        // string spellName = this.spellIndexes[pg];
-        // string realName = this.nameTranslations[spellName].Item1;
-        // Damageable currentSpell = this.db.GetSpell(realName).GetComponent<Damageable>();
-        //
-        // return new Page
-        // {
-        //     realName = realName,
-        //     spellName = spellName,
-        //     description = currentSpell.description,
-        //     facts = currentSpell.facts,
-        //     subject = currentSpell
-        // };
         return this.currentPages[pg];
     }
 

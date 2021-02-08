@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Damageable;
@@ -22,6 +23,11 @@ public abstract class Creature : Damageable
     public OnTurnEnd SelfEnd { get => selfEnd; set => selfEnd = value; }
     public OnDeath SelfDie { get => selfDie; set => selfDie = value; }
     public HandleAddDamage TakeDmg { get => takeDmg; set => takeDmg = value; }
+
+    public void Awake()
+    {
+        this.selfDie += this.Detarget;
+    }
 
     public virtual void Attack()
     {
