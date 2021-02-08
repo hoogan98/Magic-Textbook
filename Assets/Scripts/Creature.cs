@@ -5,42 +5,35 @@ using static Damageable;
 
 public abstract class Creature : Damageable
 {
-    //public TimeCube tCube;
 
-    public float health;
-    public float atk;
-    public HashSet<string> aspects;
-    public Dictionary<string, float> selfTags;
-    public HashSet<string> atkTags;
+    public abstract float Atk { get; set; }
+    public abstract Dictionary<string, float> SelfTags { get; set; }
+    public abstract HashSet<string> AtkTags { get; set; }
+    public abstract float Health { get; set; }
+    public abstract HashSet<string> Aspects { get; set; }
 
     private SideEffect atkSide;
     private OnAttack selfAtkSide;
     private OnTurnEnd selfEnd;
     private OnDeath selfDie;
     private HandleAddDamage takeDmg;
-
-    public float Atk { get => atk; set => atk = value; }
-    public Dictionary<string, float> SelfTags { get => selfTags; set => selfTags = value; }
-    public HashSet<string> AtkTags { get => atkTags; set => atkTags = value; }
     public SideEffect AtkSide { get => atkSide; set => atkSide = value; }
     public OnAttack SelfAtkSide { get => selfAtkSide; set => selfAtkSide = value; }
     public OnTurnEnd SelfEnd { get => selfEnd; set => selfEnd = value; }
-    public float Health { get => health; set => health = value; }
-    public HashSet<string> Aspects { get => aspects; set => aspects = value; }
     public OnDeath SelfDie { get => selfDie; set => selfDie = value; }
     public HandleAddDamage TakeDmg { get => takeDmg; set => takeDmg = value; }
 
     public virtual void Attack()
     {
         //delegates run first, then attack. Creature could die during delegates.
-        if (this.selfAtkSide != null)
+        if (this.SelfAtkSide != null)
         {
-            this.selfAtkSide();
+            this.SelfAtkSide();
         }
 
         if (target != null)
         {
-            this.target.Damage(this.atk, this.atkTags, this.atkSide);
+            this.target.Damage(this.Atk, this.AtkTags, this.AtkSide);
         }
     }
 
@@ -55,7 +48,7 @@ public abstract class Creature : Damageable
         {
             if (this.SelfTags.ContainsKey(tag))
             {
-                dmg *= this.selfTags[tag];
+                dmg *= this.SelfTags[tag];
             }
         }
         //dmg is taken first, then delegates

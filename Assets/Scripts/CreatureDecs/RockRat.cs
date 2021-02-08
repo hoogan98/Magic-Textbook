@@ -8,61 +8,40 @@ public class RockRat : Creature
     //An elemental rat made out of rocks.
     // => strong against blades and water
     // => weak against other rocks and lava
-
     
-    private List<string> facs = new List<string>
+    public override float Health { get; set; } = 45f;
+    public override float Atk { get; set; } = 9f;
+    public override Dictionary<string, float> SelfTags { get; set; } = new Dictionary<string, float>
+    {
+        { "slice", 0f },
+        { "wet", 0.1f },
+        { "rock", 1.5f },
+        { "lava", 2f }
+    };
+    public override HashSet<string> AtkTags { get; set; } = new HashSet<string>
+    {
+        "rock",
+        "bluntForce"
+    };
+    public override HashSet<string> Aspects { get; set; } = new HashSet<string>
+    {
+        "heavy",
+        "small",
+        "rock",
+        "animal",
+        "living",
+        "elemental"
+    };
+    public override string description { get; set; } = "An elemental rat made out of rocks.";
+    public override List<string> facts { get; set; } = new List<string>
     {
         "strong against blades and water",
         "weak against other rocks and lava",
         "gives concussions to hit creatures, resulting in lower attack if they attack using telepathy or psychic magic"
     };
 
-    public override string description
-    {
-        get
-        {
-            return "An elemental rat made out of rocks.";
-        }
-        set { }
-    }
-
-    public override List<string> facts
-    {
-        get { return this.facs; }
-        set { }
-    }
-
     public override void Initialize()
     {
-        //basic vals
-        this.Health = 45f;
-        this.Atk = 9f;
-
-        //tag declarations
-        this.SelfTags = new Dictionary<string, float>
-        {
-            { "slice", 0f },
-            { "wet", 0.1f },
-            { "rock", 1.5f },
-            { "lava", 2f }
-        };
-
-        this.AtkTags = new HashSet<string>
-        {
-            "rock",
-            "bluntForce"
-        };
-
-        this.Aspects = new HashSet<string>
-        {
-            "heavy",
-            "small",
-            "rock",
-            "animal",
-            "living",
-            "elemental"
-        };
-
         //delegate declarations
         this.AtkSide = new SideEffect(giveConcussion);
         this.SelfAtkSide = null;

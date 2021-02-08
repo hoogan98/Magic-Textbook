@@ -55,36 +55,43 @@ public class UIMGR : MonoBehaviour
         Text factBox = openBook.transform.Find("FactsText").GetComponent<Text>();
         Text statBox = openBook.transform.Find("StatsText").GetComponent<Text>();
         factBox.text = "";
+        statBox.text = "";
+
+        if (current.subject == null)
+        {
+            return;
+        }
+        
         foreach (string fact in current.facts)
         {
             factBox.text += fact + "\r\n";
         }
 
-        // if (current.subject is Creature c)
+        if (current.subject is Creature c)
+        {
+            statBox.text = "Health: " + c.Health + "\r\n" +
+                "Attack: " + c.Atk + "\r\n" + 
+                "Aspects:";
+            foreach (string aspect in c.Aspects)
+            {
+                statBox.text += ", " + aspect;
+            }
+        
+            statBox.text += "\r\n" + "Damage Mods:";
+            foreach (string mod in c.SelfTags.Keys)
+            {
+                statBox.text += ", " + mod + " : x" + c.SelfTags[mod];
+            }
+            
+            statBox.text += "\r\n" + "Attack Tags:";
+            foreach (string atk in c.AtkTags)
+            {
+                statBox.text += ", " + atk;
+            }
+        } 
+        // else if (current.subject is Spell s)
         // {
-        //     statBox.text = "Health: " + c.Health + "\r\n" +
-        //         "Attack: " + c.atk + "\r\n" + 
-        //         "Aspects:";
-        //     foreach (string aspect in c.aspects)
-        //     {
-        //         statBox.text += ", " + aspect;
-        //     }
-        //
-        //     statBox.text += "\r\n" + "Damage Mods:";
-        //     foreach (string mod in c.selfTags.Keys)
-        //     {
-        //         statBox.text += ", " + mod + " : x" + c.selfTags[mod];
-        //     }
-        //     
-        //     statBox.text += "\r\n" + "Attack Tags:";
-        //     foreach (string atk in c.atkTags)
-        //     {
-        //         statBox.text += ", " + atk;
-        //     }
-        // }
-        // } else if (current.subject is Spell s)
-        // {
-        //     for later, when you implement spells
+        //     //for later, when you implement spells
         // }
         
     }

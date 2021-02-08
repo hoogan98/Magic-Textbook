@@ -131,6 +131,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1465534288541059415, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targetingMarker
+      value: 
+      objectReference: {fileID: 6492608511240007939, guid: ec3a9ffdd56071742bb448ec8e6ed6e7,
+        type: 3}
+    - target: {fileID: 1465534288541059415, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targeterMarker
+      value: 
+      objectReference: {fileID: 2416876503308789816, guid: a8beb2901794032429363b81d1793cc8,
+        type: 3}
     - target: {fileID: 4942706146577865856, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
         type: 3}
       propertyPath: m_Name
@@ -191,11 +203,47 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5016447389361125996, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targeterMarker
+      value: 
+      objectReference: {fileID: 8774423896274729437, guid: f6408bf3a44f8814292de7d5cae5d140,
+        type: 3}
+    - target: {fileID: 5016447389361125996, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targetingMarker
+      value: 
+      objectReference: {fileID: 4454341026907029740, guid: d1a7dfee7e7bdbc4a8eeb20e633f6d1b,
+        type: 3}
     - target: {fileID: 5975263519046219727, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
         type: 3}
       propertyPath: myBoi
       value: 
       objectReference: {fileID: 2034926803}
+    - target: {fileID: 6475590268145466578, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targetingMarker
+      value: 
+      objectReference: {fileID: 8577266291719799911, guid: fdf91c5342f759a4d9884475518e3534,
+        type: 3}
+    - target: {fileID: 6475590268145466578, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targeterMarker
+      value: 
+      objectReference: {fileID: 4271385596799891231, guid: 28bf39949fa53ad46afbdbd07cb56618,
+        type: 3}
+    - target: {fileID: 7676556755457868417, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targetingMarker
+      value: 
+      objectReference: {fileID: 2143765499651888122, guid: 814e36eba1d7ec84a8ace1de0fdc94de,
+        type: 3}
+    - target: {fileID: 7676556755457868417, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targeterMarker
+      value: 
+      objectReference: {fileID: 6566844807415408124, guid: b52e565c82382fc41a5e3f105e7b99d4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9db55bfd0bf3cef45870ddfb47c7274f, type: 3}
 --- !u!1 &123879839
@@ -305,6 +353,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1319857216}
     m_Modifications:
+    - target: {fileID: 1724340932927328660, guid: 74d5f70461e8cd443a296435ef5f0645,
+        type: 3}
+      propertyPath: targeterMarker
+      value: 
+      objectReference: {fileID: 817425105353513438, guid: 7dc811690527096428765c8c14b0027c,
+        type: 3}
+    - target: {fileID: 1724340932927328660, guid: 74d5f70461e8cd443a296435ef5f0645,
+        type: 3}
+      propertyPath: targetingMarker
+      value: 
+      objectReference: {fileID: 4557353457941676054, guid: ef80a9f8330f8c0448080ffb7d9f6427,
+        type: 3}
     - target: {fileID: 1724340932927328665, guid: 74d5f70461e8cd443a296435ef5f0645,
         type: 3}
       propertyPath: m_Name
@@ -906,6 +966,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1465534288541059415, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targetingMarker
+      value: 
+      objectReference: {fileID: 6492608511240007939, guid: ec3a9ffdd56071742bb448ec8e6ed6e7,
+        type: 3}
+    - target: {fileID: 1465534288541059415, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targeterMarker
+      value: 
+      objectReference: {fileID: 2416876503308789816, guid: a8beb2901794032429363b81d1793cc8,
+        type: 3}
     - target: {fileID: 4942706146577865856, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
         type: 3}
       propertyPath: m_Name
@@ -966,11 +1038,47 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5016447389361125996, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targeterMarker
+      value: 
+      objectReference: {fileID: 8774423896274729437, guid: f6408bf3a44f8814292de7d5cae5d140,
+        type: 3}
+    - target: {fileID: 5016447389361125996, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targetingMarker
+      value: 
+      objectReference: {fileID: 4454341026907029740, guid: d1a7dfee7e7bdbc4a8eeb20e633f6d1b,
+        type: 3}
     - target: {fileID: 5975263519046219727, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
         type: 3}
       propertyPath: myBoi
       value: 
       objectReference: {fileID: 1412469321}
+    - target: {fileID: 6475590268145466578, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targetingMarker
+      value: 
+      objectReference: {fileID: 8577266291719799911, guid: fdf91c5342f759a4d9884475518e3534,
+        type: 3}
+    - target: {fileID: 6475590268145466578, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targeterMarker
+      value: 
+      objectReference: {fileID: 4271385596799891231, guid: 28bf39949fa53ad46afbdbd07cb56618,
+        type: 3}
+    - target: {fileID: 7676556755457868417, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targetingMarker
+      value: 
+      objectReference: {fileID: 2143765499651888122, guid: 814e36eba1d7ec84a8ace1de0fdc94de,
+        type: 3}
+    - target: {fileID: 7676556755457868417, guid: 9db55bfd0bf3cef45870ddfb47c7274f,
+        type: 3}
+      propertyPath: targeterMarker
+      value: 
+      objectReference: {fileID: 6566844807415408124, guid: b52e565c82382fc41a5e3f105e7b99d4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9db55bfd0bf3cef45870ddfb47c7274f, type: 3}
 --- !u!1 &1702937119
@@ -1093,6 +1201,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 644362186}
     m_Modifications:
+    - target: {fileID: 1724340932927328660, guid: 74d5f70461e8cd443a296435ef5f0645,
+        type: 3}
+      propertyPath: targeterMarker
+      value: 
+      objectReference: {fileID: 817425105353513438, guid: 7dc811690527096428765c8c14b0027c,
+        type: 3}
+    - target: {fileID: 1724340932927328660, guid: 74d5f70461e8cd443a296435ef5f0645,
+        type: 3}
+      propertyPath: targetingMarker
+      value: 
+      objectReference: {fileID: 4557353457941676054, guid: ef80a9f8330f8c0448080ffb7d9f6427,
+        type: 3}
     - target: {fileID: 1724340932927328665, guid: 74d5f70461e8cd443a296435ef5f0645,
         type: 3}
       propertyPath: m_Name

@@ -4,52 +4,30 @@ using UnityEngine;
 
 public class Glonk : Creature
 {
-    private List<string> facs = new List<string>() {
+    public override float Health { get; set; } = 1f;
+    public override float Atk { get; set; } = 0f;
+    public override Dictionary<string, float> SelfTags { get; set; } = new Dictionary<string, float>();
+    public override HashSet<string> AtkTags { get; set; } = new HashSet<string>
+    {
+        "weak"
+    };
+    public override HashSet<string> Aspects { get; set; } = new HashSet<string>
+    {
+        "living",
+        "liquid",
+        "slime",
+        "weak",
+        "small"
+    };
+    public override string description { get; set; } = "The Glonk is the physical form of the abstract concept of a mistake.";
+    public override List<string> facts { get; set; } = new List<string>() {
         "does absolutely nothing",
         "cannot be intentionally summoned",
         "dies instantly when hit with anything, regardless of damage"
     };
 
-    public override string description
-    {
-        get
-        {
-            return "The Glonk is the physical form of the abstract concept of a mistake.";
-        }
-        set { }
-    }
-
-    public override List<string> facts
-    {
-        get { return this.facs; }
-        set { }
-    }
-
     public override void Initialize()
     {
-        
-        
-        //basic vals
-        this.Health = 1f;
-        this.Atk = 0f;
-        
-        //tag declarations
-        this.SelfTags = new Dictionary<string, float>();
-        
-        this.AtkTags = new HashSet<string>
-        {
-            "weak"
-        };
-        
-        this.Aspects = new HashSet<string>
-        {
-            "living",
-            "liquid",
-            "slime",
-            "weak",
-            "small"
-        };
-        
         //delegate declarations
         this.AtkSide = null;
         this.SelfAtkSide = null;

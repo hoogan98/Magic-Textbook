@@ -9,64 +9,41 @@ public class DirtRat : Creature
     // => gets a stats up and size up from getting hit with "dirty" attacks.  
     // => weak to clean attacks
     // => has telepathic attacks
-
-    private float origXScale;
-    private List<string> facs = new List<string> {
+    
+    public override float Health { get; set; } = 30f;
+    public override float Atk { get; set; } = 7f;
+    public override Dictionary<string, float> SelfTags { get; set; } = new Dictionary<string, float>
+    {
+        { "clean", 3 },
+        { "dirty", 0 }  //completely immune
+    };
+    public override HashSet<string> AtkTags { get; set; } = new HashSet<string>
+    {
+        "bite",
+        "dirty"
+    };
+    public override HashSet<string> Aspects { get; set; } = new HashSet<string>
+    {
+        "telepathic",
+        "elemental",
+        "living",
+        "dirty",
+        "small",
+        "angry",
+        "animal"
+    };
+    public override string description { get; set; } = "the dirt rat, a psychic pile of sentient dirt shaped like a rat.Communicates telepathically, but can only say 'more dirt'";
+    public override List<string> facts { get; set; } = new List<string> {
         "gets a stats up and size up from getting hit with dirty attacks.",
         "weak to clean attacks",
         "has telepathic attacks"
     };
 
-    public override string description
-    {
-        get
-        {
-            return "the dirt rat, a psychic pile of sentient dirt shaped like a rat.Communicates telepathically, but can only say 'more dirt'";
-        }
-        set { }
-    }
-
-    public override List<string> facts
-    {
-        get { return this.facs; }
-        set { }
-    }
-
-
-
+    private float origXScale;
+    
     public override void Initialize()
     {
-        //basic vals
-        this.Health = 30f;
-        this.Atk = 7f;
-
         this.origXScale = this.transform.localScale.x;
-
-
-        //tag declarations
-        this.SelfTags = new Dictionary<string, float>
-        {
-            { "clean", 3 },
-            { "dirty", 0 }  //completely immune
-        };
-
-
-        this.AtkTags = new HashSet<string>
-        {
-            "bite",
-            "dirty"
-        };
-
-        this.Aspects = new HashSet<string>
-        {
-            "telepathic",
-            "elemental",
-            "living",
-            "dirty",
-            "small",
-            "angry",
-            "animal"
-        };
 
         //delegate declarations
         this.AtkSide = null;
